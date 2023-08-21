@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>commimg soon....</title>
+
+<style type="text/css">
+*{margin:0px;padding:0px;}
+#head{
+  margin-top:50px;
+  height:30px;
+  width:80%;
+  letter-spacing:10px;
+  font-size:20px;
+  border-right:5px solid orange;
+  animation:onof 10s linear 1;
+  overflow: hidden;
+  white-space: nowrap;
+ }
+@keyframes onof{
+   from{
+     width:0%;
+     border-right:5px solid white;
+}
+to{
+ width:100%;
+  border-right:5px solid orange;
+}
+}
+#time{
+  margin-top:50px;
+  height:30px;
+  width:100%;
+  text-align: center;
+  font-size:50px;
+  animation:onof 4s linear 1;
+  white-space: nowrap;
+}
+
+</style>
+</head>
+<body>
+<div id="head">COMMING SOON.............................</div>
+<div id="time"></div>
+</body>
+<script type="text/javascript">
+function getTime(){
+var Time=document.querySelector('#time')
+var date= new Date()
+var sec = date.getSeconds()
+var min = date.getMinutes()
+var hr = date.getHours()
+hr=hr%12;
+Time.innerHTML=`${hr} : ${min} : ${sec}`;
+setTimeout("getTime()",1000)
+}
+getTime()
+</script>
+</html>
