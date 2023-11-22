@@ -1,135 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    * {
-        margin: 0px;
-        padding: 0px;
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open PDF with Colorful Button</title>
 
-    #nav {
-
-        width: 100%;
-        background: transparent;
-        background: linear-gradient(rgba(224, 15, 203, 0.749), rgba(117, 17, 179, 0.931));
-
-    }
-
-    .m-text {
-        height: 40px;
-        font-size: 25px;
-        color: white;
-        padding: 20px;
-
-    }
-
+  <style>
     body {
-        background-color: rgb(96, 94, 94);
+      background-color: #000; /* Black background */
+      color: #fff; /* White text */
+      font-family: sans-serif;
+      padding: 20px;
     }
 
-    #p-link {
-        height: 40px;
-        width: 300px;
-        background-color: white;
-        outline: none;
-        font-size: 20PX;
-        border-radius: 30PX;
-        padding: 5px;
-        margin-left: 50px;
-        margin-top: 50px;
+    .open-pdf-button {
+      background-color: #f00; /* Red background */
+      color: #fff; /* White text */
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
 
-    #get-p {
-        letter-spacing: 10px;
-        height: 50px;
-        width: 200px;
-        background: linear-gradient(rgba(224, 15, 203, 0.749), rgba(117, 17, 179, 0.931));
-        color: white;
-        border-radius: 30px;
-        margin-left: 20px;
-        margin-top: 20px;
+    .open-pdf-button:hover {
+      background-color: #ff0; /* Orange background */
     }
-
-    #b-div {
-        height: 400px;
-        width: 450px;
-        backdrop-filter: blur(1px);
-        background: linear-gradient(rgba(224, 15, 203, 0.749), rgba(117, 17, 179, 0.931));
-
-        position: absolute;
-        bottom: 0%;
-        border-top-right-radius: 400px;
-    }
-
-    #v-div {
-        margin-top: 10px;
-        height: 350px;
-        width: 275px;
-        background-color: red;
-        z-index: 1;
-        position: absolute;
-        bottom: 10%;
-        left: 5%;
-    }
-
-    #Vsrc {
-        display: hidden;
-    }
-</style>
-
+  </style>
+</head>
 <body>
-    <nav id="nav">
-        <h2 class="m-text">insta downloder</h2>
-    </nav>
-    <div id="main">
-        <input type="text" placeholder="ENTER YOUR LINK..." id="p-link">
-        <button id="get-p" onclick="getdata()">ENTER</button>
-    </div>
-    <div id="b-div"></div>
-    <div id="v-div">
-        <video id="Vsrc" width="275px" height="350px" controls>
-            <source id="Vsrc" type="video">
-        </video>
-        <button id="get-p"><a id="downloadBtn" href="" download></a>DOWNLOAD</button>
-    </div>
-    
+  <a href="SYBCS_DS-I Solved Slips 2023-24.pdf" target="_blank" class="open-pdf-button">Open PDF</a>
+
+  <script>
+    // Add event listener to open the PDF when the button is clicked
+    document.querySelector('.open-pdf-button').addEventListener('click', function() {
+      // Open the PDF in a new tab
+      window.open('SYBCS_DS-I Solved Slips 2023-24.pdf', '_blank');
+    });
+  </script>
 </body>
-<script>
-
-    function getdata() {
-
-        var Vlink = document.querySelector('#p-link').value;
-        fetch(`https://apis.jobians.top/v2/downloader/instagram?url=${Vlink}`)
-            .then((responce) => {
-                return responce.json()
-            })
-            .then((result) => {
-                var type = (result.data[0].type)
-                var url = (result.data[0].url)
-                console.log(type + url)
-                ShowData(url)
-            })
-            .catch((error) => {
-                document.write(error)
-            })
-    }
-
-    function ShowData(url) {
-
-        var d_btn = document.querySelector('#downloadBtn')
-        var Vsrc = document.querySelector('#Vsrc')
-        d_btn.setAttribute("download", url)
-        d_btn.setAttribute("href", url)
-        Vsrc.setAttribute("src", url)
-
-    }
-
-
-</script>
-
 </html>
